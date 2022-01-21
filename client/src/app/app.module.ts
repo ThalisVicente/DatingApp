@@ -15,6 +15,7 @@ import { MemberDetailComponent } from './members/member-detail/member-detail.com
 import { ListsComponent } from './lists/lists.component';
 import { MessagesComponent } from './messages/messages.component';
 import { ToastrModule } from 'ngx-toastr';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 //Angular Material Components
 import {MatInputModule} from '@angular/material/input';
@@ -102,6 +103,7 @@ import { ServerErrorComponent } from './errors/server-error/server-error.compone
     MatPaginatorModule,
     ReactiveFormsModule,
     ToastrModule.forRoot({positionClass: 'toast-bottom-right'}), 
+    TooltipModule.forRoot(),
     SharedModule
 
   ],
