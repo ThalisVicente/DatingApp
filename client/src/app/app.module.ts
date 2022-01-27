@@ -19,13 +19,8 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 //Angular Material Components
 import {MatInputModule} from '@angular/material/input';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatRadioModule} from '@angular/material/radio';
-import {MatSelectModule} from '@angular/material/select';
-import {MatSliderModule} from '@angular/material/slider';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -51,6 +46,8 @@ import { ErrorInterceptor } from './_interceptors/error.interceptor';
 import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
+import { MemberCardComponent } from './members/member-card/member-card.component';
+import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 
 
 @NgModule({
@@ -65,7 +62,8 @@ import { ServerErrorComponent } from './errors/server-error/server-error.compone
     MessagesComponent,
     TestErrorsComponent,
     NotFoundComponent,
-    ServerErrorComponent
+    ServerErrorComponent,
+    MemberCardComponent
   ],
   imports: [
     BrowserModule,
@@ -74,13 +72,8 @@ import { ServerErrorComponent } from './errors/server-error/server-error.compone
     BrowserAnimationsModule,
     FormsModule,
     MatInputModule,
-    MatAutocompleteModule,
-    MatDatepickerModule,
     MatFormFieldModule,
     MatRadioModule,
-    MatSelectModule,
-    MatSliderModule,
-    MatSlideToggleModule,
     MatMenuModule,
     MatSidenavModule,
     MatToolbarModule,
@@ -104,11 +97,12 @@ import { ServerErrorComponent } from './errors/server-error/server-error.compone
     ReactiveFormsModule,
     ToastrModule.forRoot({positionClass: 'toast-bottom-right'}), 
     TooltipModule.forRoot(),
-    SharedModule
+    SharedModule,
 
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })
